@@ -113,3 +113,90 @@ blockquote { font-family: var(--serif); font-size: 25px; line-height: 1.4; }
   .model-closing { margin-top: 56px; }
   .diagnostic-intro { padding-bottom: 120px; }
 }
+
+/* Phase 2: long-form editorial sections. Phase 1 rules remain unchanged. */
+.editorial { border-top: 1px solid var(--line); }
+.editorial-body { max-width: 640px; }
+.editorial blockquote { margin-block: 24px; padding-left: 20px; border-left: 1px solid var(--line); }
+.editorial .payoff { margin-top: 40px; color: var(--accent); }
+.editorial-list { margin-block: 28px; padding-left: 23px; }
+.editorial-list li { padding-left: 5px; }
+.editorial-list li + li { margin-top: 12px; }
+.explanation { padding-top: 96px; }
+.explanation h2 { margin-bottom: 24px; }
+.explanation .payoff:first-child { margin-top: 0; margin-bottom: 48px; }
+.explanation .familiar-phrase { font-family: var(--serif); font-size: 24px; line-height: 1.4; }
+.explanation .familiar-phrase + .familiar-phrase { margin-top: 10px; }
+.explanation .familiar-phrase + p:not(.familiar-phrase) { margin-top: 36px; }
+.borrowed .inherited-rule { color: var(--muted); font-family: var(--serif); font-size: 24px; line-height: 1.45; }
+.borrowed .inherited-rule + .inherited-rule { margin-top: 10px; }
+.borrowed .inherited-rule + p:not(.inherited-rule) { margin-top: 36px; }
+.editorial .identity-quote { margin-block: 30px 40px; padding-left: 0; border: 0; color: var(--accent); font-size: clamp(34px, 4.5vw, 52px); }
+.growing { background: var(--tint); }
+.growing .payoff { padding-top: 32px; border-top: 1px solid #a9b5a5; }
+.growing .payoff:last-child { font-size: clamp(34px, 4.5vw, 54px); }
+.knowing .editorial-body > p:not(.payoff) { padding-block: 24px; margin: 0; border-bottom: 1px solid var(--line); }
+.knowing .payoff { margin-top: 48px; }
+.limitations .limit-lead { margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--line); font-family: var(--serif); font-size: 27px; line-height: 1.35; }
+.limitations .limit-lead:first-child { margin-top: 0; }
+.limitations .limit-lead + p { margin-top: 12px; color: var(--muted); }
+.limitations .payoff { margin-top: 48px; }
+.audience-for .editorial-list, .audience-not .editorial-list { list-style: none; padding: 0; margin-top: 0; }
+.audience-for .editorial-list li, .audience-not .editorial-list li { padding: 0 0 16px; border-bottom: 1px solid var(--line); }
+.audience-for .payoff { font-size: clamp(32px, 4.2vw, 48px); }
+.audience-not { padding-top: 48px; }
+.case-number { margin-bottom: 24px; color: var(--accent); font-size: 14px; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+.case-money h2, .case-visibility h2, .case-delegation h2 { max-width: 730px; }
+.case-visibility .editorial-list { column-gap: 36px; }
+.case-visibility .editorial-list li { break-inside: avoid; }
+.case-delegation .editorial-body > blockquote { margin-block: 36px; color: var(--accent); font-size: clamp(30px, 3.6vw, 42px); }
+.session-offer { background: var(--tint); }
+.session-offer h2 { font-family: var(--sans); font-size: 18px; letter-spacing: 0; }
+.session-offer .payoff:first-child { margin-top: 0; font-size: clamp(36px, 5vw, 60px); line-height: 1.15; }
+.session-offer .payoff:first-child + p { margin-top: 36px; }
+.session-offer .editorial-list { margin-block: 32px 48px; }
+.session-offer .session-closing { margin-top: 40px; }
+.session-offer .session-closing + .session-closing { margin-top: 12px; }
+.receives .payoff { max-width: 900px; }
+.outcome-layout { margin-block: 40px; }
+.outcome-chain { list-style: none; margin: 0; padding: 28px 20px; border-block: 1px solid var(--line); }
+.outcome-chain li { font-size: 16px; line-height: 1.5; letter-spacing: 0.035em; color: var(--accent); }
+.outcome-chain .chain-arrow { padding-block: 16px; }
+.outcome-explanation { margin-top: 40px; max-width: 540px; }
+.outcome-explanation h3 { margin-top: 28px; margin-bottom: 10px; font-size: 15px; letter-spacing: 0.035em; color: var(--accent); }
+.outcome-explanation h3:first-child { margin-top: 0; }
+.final-cta { padding-block: 112px 144px; }
+.final-cta h2 { max-width: 900px; }
+.final-cta .button { margin-top: 40px; }
+
+@media (min-width: 700px) {
+  .editorial-body { margin-left: 17%; }
+  .explanation { padding-top: 144px; }
+  .explanation .editorial-body { max-width: 760px; margin-left: 0; }
+  .explanation .payoff:first-child { font-size: 48px; margin-bottom: 56px; }
+  .borrowed .editorial-body { margin-left: 30%; }
+  .growing .editorial-body { max-width: 900px; margin-left: 0; }
+  .growing .editorial-body > p:not(.payoff) { max-width: 640px; }
+  .growing .editorial-list { columns: 2; column-gap: 64px; max-width: 800px; margin-block: 36px; }
+  .growing .editorial-list li { break-inside: avoid; }
+  .growing .payoff { margin-top: 48px; }
+  .knowing .editorial-body { max-width: 800px; }
+  .knowing .editorial-body > p:not(.payoff) { max-width: 640px; }
+  .limitations .editorial-body { margin-left: 0; max-width: 800px; }
+  .limitations .limit-lead + p { max-width: 600px; margin-left: 17%; }
+  .audience-not { padding-top: 64px; }
+  .audience-not .editorial-body { margin-left: 30%; }
+  .case-visibility .editorial-list { columns: 2; }
+  .case-money .editorial-body { margin-left: 17%; }
+  .case-visibility .editorial-body { margin-left: 30%; }
+  .case-delegation .editorial-body { margin-left: 0; max-width: 760px; }
+  .session-offer .editorial-body { margin-left: 0; max-width: 850px; }
+  .session-offer .editorial-body > p:not(.statement), .session-offer .editorial-list { max-width: 640px; }
+  .outcome-layout { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: start; margin-block: 56px; }
+  .outcome-chain { padding: 32px 0; }
+  .outcome-explanation { margin-top: 0; }
+  .final-cta { padding-block: 160px 192px; }
+  .final-cta .editorial-body { margin-left: 0; }
+}
+
+.knowing .knowledge { font-weight: 600; }
