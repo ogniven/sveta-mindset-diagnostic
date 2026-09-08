@@ -1,0 +1,1 @@
+# sveta-mindset-diagnostic
