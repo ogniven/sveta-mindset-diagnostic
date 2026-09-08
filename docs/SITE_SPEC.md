@@ -1,4 +1,4 @@
-# SVETA MINDSET — SITE SPECIFICATION v1.0
+# SVETA MINDSET — SITE SPECIFICATION v1.1
 
 Status: APPROVED MVP SPEC  
 Project: SVETA MINDSET Diagnostic Site  
@@ -126,17 +126,20 @@ Main order:
 8. Explanation: old self / old scenario
 9. "My / borrowed" identity section
 10. Growing expert section
-11. Product limitations
-12. Who it is for
-13. Who it is not for
-14. Short cases
-15. Diagnostic session offer
-16. What the person receives
-17. Final CTA
-18. Application form
-19. Footer / SVETA MINDSET
+11. Knowing vs tolerating (§39)
+12. Product limitations
+13. Who it is for
+14. Who it is not for
+15. Short cases
+16. Diagnostic session offer
+17. What the person receives
+18. Final CTA
+19. Application form
+20. Footer / SVETA MINDSET
 
 Do not reorder without explicit approval.
+
+Long-form sections below the diagnostic remain scrollable and unlocked. Before the result: no sticky session CTA, popup sale, or forced application. Early primary CTAs lead toward the diagnostic: preserve the Hero movement to the next section and "Начать диагностику" in §9. The diagnostic delivers insight before its own optional session CTA.
 
 ---
 
@@ -376,11 +379,7 @@ The diagnostic must:
 - clearly distinguish single-choice and multi-choice;
 - never request email before showing the result.
 
-Suggested progress:
-
-1 / 9  
-2 / 9  
-etc.
+Use exactly nine logical stages Q1–Q9, with progress 1/9 through 9/9. A stage may contain one main question and a short conditional follow-up on the same screen. Follow-ups never get a separate progress number. F0/F1 may end the diagnostic early.
 
 Transitions should be subtle.
 
@@ -417,8 +416,23 @@ future_self
 conflict_center
 secondary_conflict_center
 evidence_strength
+mixed_mode = pair | complex (only when evidence_strength = mixed; otherwise empty)
 
 Do not expose internal IDs to the visitor.
+
+Validation:
+
+- goal_text, action_text, and future_self are required on the continuing main path.
+- avoidance_sentence is optional.
+- Every selected other option requires corresponding free text, stored separately from its ID. In Q2, goal_text also supplies the explanation for goal_area = other.
+- F0/F1 do not require later answers; action_unknown must reach F1 without requiring an invented action.
+
+Free-text display:
+
+- Never automatically decline or grammatically interpolate arbitrary Russian free text.
+- Show goal_text, action_text, future_self, and other text in separate quotations/blocks, preserving user wording.
+- Example: "Вы назвали следующим шагом:" followed by a separate "[ACTION_TEXT]" block.
+- Use fixed references to the quoted step/goal in result templates and center-specific questions.
 
 ---
 
@@ -462,7 +476,7 @@ Show fallback result F0:
 
 No aggressive session sale.
 
-Optional secondary link:
+Omit this optional secondary link until its URL is supplied:
 
 Читать SVETA MINDSET
 
@@ -510,7 +524,7 @@ Placeholder examples:
 «Нанять первого сотрудника»  
 «Начать регулярно продавать в блоге»
 
-Save as `goal_text`.
+Save as `goal_text`. Required.
 
 ---
 
@@ -530,7 +544,7 @@ Placeholder:
 «Передать часть клиентов сотруднику»  
 «Сказать нет»
 
-Save as `action_text`.
+Save as `action_text`. Required to continue the main diagnostic; action_unknown instead routes to F1.
 
 Then ask:
 
@@ -548,6 +562,10 @@ action_partial
 
 action_unknown
 = На самом деле вообще не знаю, что делать.
+
+### If action_partial
+
+Continue without adding points. The result cannot be strong; apply the other evidence rules normally.
 
 ### If action_unknown
 
@@ -579,7 +597,7 @@ Allow the user to return and revise the answer.
 
 Что в этом может оказаться для вас неприятным?
 
-Allow maximum two selections.
+Require one or two selections. A single selection becomes threat_primary. With two selections, choosing the primary is mandatory before continuing.
 
 Options:
 
@@ -624,7 +642,7 @@ If two selected, ask:
 
 Save as `threat_primary`.
 
-Optional other as `threat_secondary`.
+The remaining selected threat becomes `threat_secondary`. With one selection, secondary is empty. This follow-up stays on Q4 (4/9).
 
 ---
 
@@ -672,7 +690,7 @@ money_not_main
 other
 = Мне важно другое.
 
-If `other`, show free text.
+If `other`, show required free text.
 
 Save as `self_primary`.
 
@@ -726,7 +744,7 @@ Save as `self_loss`.
 
 Когда новая цель начинает сталкиваться с этим представлением о себе — что вы обычно делаете?
 
-Single or maximum two choices.
+Exactly ONE primary choice. Do not allow two answers.
 
 postpone
 = Откладываю.
@@ -767,7 +785,7 @@ switch_task
 other
 = Другое.
 
-Save main response as `protection_behavior`.
+Save the single response as `protection_behavior`.
 
 ---
 
@@ -822,7 +840,7 @@ Then ask free text:
 
 **«Если я продолжаю делать по-старому, мне не приходится…»**
 
-Save as `avoidance_sentence`.
+Save as `avoidance_sentence`. Optional; keep this follow-up on Q8 (8/9).
 
 Do not transmit this free text to analytics.
 
@@ -840,7 +858,7 @@ Make this a visually quiet screen.
 
 Free text.
 
-Save as `future_self`.
+Save as `future_self`. Required.
 
 ## Button
 
@@ -854,6 +872,8 @@ These are INTERNAL only.
 
 Never show them as personality types.
 
+One answer may support multiple centers; apply the specified weight to each mapped center. Unlisted dimensions/options contribute no points. Do not infer mappings from free text.
+
 ## C1 GOODNESS
 
 Theme:
@@ -864,26 +884,13 @@ Theme:
 - not imposing;
 - avoiding others' disappointment.
 
-Strong signals:
+Mapping by evidence dimension:
 
-self:
-good_person
-not_pushy
-non_conflict
-
-threat:
-disapproval
-arrogant
-rejection
-
-behavior:
-soften_offer
-overexplain
-lower_requirements
-
-preserved:
-approval
-relationships
+- self: good_person, not_pushy, non_conflict
+- threat: disapproval, arrogant, greedy, rejection
+- loss: lose_self_respect, lose_respect
+- behavior: soften_offer, overexplain, lower_requirements
+- preserved: approval, relationships, self_image
 
 ---
 
@@ -896,27 +903,13 @@ Theme:
 - handling everything alone;
 - difficulty depending on others.
 
-Signals:
+Mapping by evidence dimension:
 
-self:
-strong
-independent
-handle_myself
-
-threat:
-dependence
-responsibility
-
-loss:
-neediness
-loss_of_control
-
-behavior:
-do_everything_myself
-
-preserved:
-control
-predictability
+- self: strong, independent, handle_myself
+- threat: dependence, responsibility
+- loss: neediness, loss_of_control, lose_self_respect
+- behavior: do_everything_myself
+- preserved: control, predictability, self_image
 
 ---
 
@@ -928,28 +921,14 @@ Theme:
 - expert role;
 - conflict between expertise and selling / visibility / leadership.
 
-Signals:
+Mapping by evidence dimension:
 
-self:
-professional
-
-goal areas:
-money
-business
-visibility
-career
-
-threat:
-evaluation
-arrogant
-greedy
-responsibility
-
-behaviors:
-soften_offer
-overthink
-more_information
-doubt_goal
+- self: professional
+- goal: money, business, visibility, career
+- threat: evaluation, arrogant, greedy, responsibility
+- loss: lose_self_respect, lose_respect, identity_confusion
+- behavior: soften_offer, overthink, more_information, doubt_goal
+- preserved: self_image, responsibility_level, control
 
 ---
 
@@ -963,23 +942,14 @@ Theme:
 - being "too much";
 - fear of arrogance.
 
-Signals:
+Mapping by evidence dimension:
 
-self:
-modest
-
-goal:
-visibility
-
-threat:
-evaluation
-arrogant
-relationship_change
-
-behavior:
-lower_requirements
-overexplain
-devalue_goal
+- self: modest
+- goal: visibility
+- threat: evaluation, arrogant, relationship_change
+- loss: lose_self_respect, lose_respect, loss_of_belonging
+- behavior: lower_requirements, overexplain, devalue_goal, postpone
+- preserved: self_image, approval, relationships
 
 ---
 
@@ -993,26 +963,13 @@ Theme:
 - guarantee;
 - avoiding action without control.
 
-Signals:
+Mapping by evidence dimension:
 
-self:
-reasonable
-
-threat:
-dependence
-responsibility
-rejection
-
-behavior:
-overthink
-more_information
-postpone
-ask_others
-
-preserved:
-control
-predictability
-avoid_reality_test
+- self: reasonable
+- threat: dependence, responsibility, rejection
+- loss: loss_of_control
+- behavior: overthink, more_information, postpone, ask_others
+- preserved: control, predictability, avoid_reality_test
 
 ---
 
@@ -1025,20 +982,13 @@ Theme:
 - fear of relationships changing;
 - fear of outgrowing environment.
 
-Signals:
+Mapping by evidence dimension:
 
-threat:
-lose_place
-relationship_change
-
-loss:
-loss_of_belonging
-identity_confusion
-
-preserved:
-relationships
-place
-approval
+- self: chosen, good_person, non_conflict
+- threat: lose_place, relationship_change, disapproval
+- loss: loss_of_belonging, identity_confusion, lose_respect
+- behavior: lower_requirements, overexplain, return_old, devalue_goal
+- preserved: relationships, place, approval
 
 ---
 
@@ -1050,13 +1000,16 @@ No machine learning.
 
 No external AI API in MVP.
 
-Suggested weights:
+Fixed v1.1 weights:
 
 Primary self-description matching a center:
 +3
 
 Primary threat matching a center:
 +2
+
+Secondary threat matching a center:
++1
 
 Self-loss matching a center:
 +2
@@ -1067,10 +1020,14 @@ Protection behavior matching a center:
 Preserved value matching a center:
 +2
 
-Goal area may provide:
-+1
+Goal area matching a center:
+maximum +1 per center
 
-The exact weights may be adjusted if needed for implementation consistency, but do not invent complicated psychometrics.
+Do not adjust these weights automatically.
+
+action_partial adds no points and does not stop the diagnostic, but prevents strong. action_unknown routes to F1. An other answer without predefined mapping receives no automatic points. Free text is not interpreted or scored automatically.
+
+Scoring selects only the language of a working hypothesis; it is not a psychometric test.
 
 Never display scores.
 
@@ -1109,35 +1066,49 @@ mixed
 
 These labels describe consistency of answers, not the person.
 
-Suggested logic:
+Evidence dimensions: self, threat, loss, behavior, preserved, goal.
+
+Count distinct supporting dimensions per center. Multiple answers inside one dimension count once: primary and secondary threats can add points but count as one threat dimension.
+
+F0/F1 routing takes precedence. Evaluate MIXED before MODERATE because their conditions can overlap.
 
 ## strong
 
-A clear center has support across at least:
+All conditions:
 
-- important self-description;
-- threat or loss;
-- protective behavior;
-- preserved value;
-
-and the highest center clearly exceeds alternatives.
+- top center score >= 8;
+- support from at least 4 distinct evidence dimensions;
+- top score minus second score >= 3;
+- action_clarity = action_clear.
 
 ## moderate
 
-There is a repeating center across several answers but not enough consistency for strong.
+All conditions:
 
-## weak
-
-Only a few scattered signals match.
+- top center score >= 5;
+- support from at least 3 distinct evidence dimensions;
+- strong conditions are not met;
+- mixed conditions are not met.
 
 ## mixed
 
-Two top centers have similar support.
+First determine mixed candidates. A center is a mixed candidate only if all conditions hold:
 
-Suggested rule:
+- score >= 5;
+- support from at least 2 distinct evidence dimensions;
+- highest score across all centers minus this center's score <= 2.
 
-If top two center scores differ by <= 2 points and both have meaningful support:
-mixed.
+Then route by the number of mixed candidates:
+
+- Exactly 2: evidence_strength = mixed, mixed_mode = pair. Use both candidates in the approved pair flow (§32).
+- 3 or more: evidence_strength = mixed, mixed_mode = complex. Use the complex flow (§32); do not artificially select two centers, use a fixed center priority, or use a random tie-break.
+- Fewer than 2: mixed conditions are not met; evaluate the other evidence rules.
+
+For complex, conflict_center and secondary_conflict_center must not imply a primary/secondary pair. Optional human formulations are display-only and follow the ranking and omission rules in §32.
+
+## weak
+
+All remaining cases.
 
 Do not expose numeric scores.
 
@@ -1148,6 +1119,15 @@ Do not expose numeric scores.
 Do not present the whole result as one long text.
 
 Use multiple result screens.
+
+- MODERATE: Screen 1 → Screen 2 → Screen 3 → moderate hypothesis → one main center-specific question (§33) → free micro-intervention (§34).
+- STRONG: Screen 1 → Screen 2 → Screen 3 → strong hypothesis → one main center-specific question → free micro-intervention.
+- MIXED pair: Screen 1 → Screen 2 → Screen 3 → pair explanation and both human formulations (§32) → one main approved question for EACH of the two centers → neutral micro-intervention (§34).
+- MIXED complex: Screen 1 → Screen 2 → Screen 3 → complex explanation (§32), with optional human formulations only under its ranking rules → complex neutral observation (§34). Do not show center-specific diagnostic questions. An ordinary unobtrusive bridge to the individual diagnostic session may follow.
+- WEAK: Screen 1 → Screen 2 → weak result and alternative checks (§31). Do not show Screen 3 or identity-preservation micro-intervention. Neutral observation is optional.
+- F0/F1 use their own fallback content.
+
+Feedback and the diagnostic’s optional session CTA follow the applicable branch.
 
 ---
 
@@ -1183,7 +1163,9 @@ Use multiple result screens.
 
 Самым неприятным для вас оказалось:
 
-**[THREAT_PRIMARY HUMAN LABEL]**
+**[PSYCHOLOGICAL_COST HUMAN LABEL]**
+
+Implementation rule (not visitor copy): whenever a result needs psychological cost, prefer self_loss if it is a meaningful predefined answer. For unclear_but_important, unknown-like answers, or unusable free text, fall back to threat_primary. Do not interpret loss free text automatically in MVP. If threat_primary is other, show its required text as a separate quotation. Never force both loss and threat into one sentence.
 
 При этом вам особенно важно продолжать знать о себе:
 
@@ -1192,6 +1174,8 @@ Use multiple result screens.
 ---
 
 # 28. RESULT SCREEN 3
+
+Only for moderate, strong, and mixed. Never show for weak.
 
 ## Heading
 
@@ -1221,7 +1205,7 @@ Use multiple result screens.
 
 ## Body template
 
-Возможно, трудность не только в том, что вам сложно:
+Вы назвали следующим шагом:
 
 **[ACTION_TEXT]**
 
@@ -1229,15 +1213,17 @@ Use multiple result screens.
 
 **«[SELF_PRIMARY]»**
 
-Тогда старое решение одновременно мешает вам получить:
+Тогда старое решение может мешать движению к цели, которую вы описали так:
 
 **[GOAL_TEXT]**
 
-и помогает не встречаться с:
+Возможно, при этом оно помогает избегать того, что вы назвали неприятным:
 
-**[SELF_LOSS / THREAT]**
+**[PSYCHOLOGICAL_COST HUMAN LABEL — selection rule in §27]**
 
 This must always be presented as hypothesis.
+
+Then show one main question for the selected center (§33), followed by §34.
 
 ---
 
@@ -1249,11 +1235,13 @@ This must always be presented as hypothesis.
 
 ## Body
 
-В ваших ответах повторяется одна и та же связь:
+В ваших ответах повторяется одна и та же связь.
 
-**[ACTION]**
+Вы назвали следующим шагом:
 
-затрагивает важное для вас представление:
+**[ACTION_TEXT]**
+
+Возможно, этот шаг затрагивает важное для вас представление:
 
 **«[SELF]»**
 
@@ -1300,11 +1288,15 @@ Then show center-specific diagnostic question.
 - Я действительно хочу эту цель?
 - Или психологическая цена просто находится в другом месте?
 
-Do not sell aggressively from weak result.
+Do not show Screen 3 or identity-preservation micro-intervention. Keep the alternative checks above: strategy / information / skill / objective limitation / uncertainty about goal / another psychological cost. The neutral observation in §34 is optional. Do not sell aggressively from weak result.
 
 ---
 
 # 32. RESULT — MIXED
+
+## mixed_mode = pair
+
+Use when there are exactly two mixed candidates (§24).
 
 ## Heading
 
@@ -1312,7 +1304,7 @@ Do not sell aggressively from weak result.
 
 ## Body
 
-В ваших ответах одновременно звучат две разные темы:
+В ваших ответах одновременно звучат две темы:
 
 **[CENTER 1 HUMAN FORMULATION]**
 
@@ -1320,9 +1312,54 @@ Do not sell aggressively from weak result.
 
 **[CENTER 2 HUMAN FORMULATION]**
 
-Это как раз тот случай, где автоматическая диагностика должна остановиться, а не выбрать красивый ярлык.
+Автоматическая диагностика не должна решать за вас, какая из них первична.
 
 На индивидуальном разборе стоило бы проверить, что здесь первично, а что уже является следствием.
+
+## Internal human formulations
+
+Use these exact formulations in the pair blocks above or in the optional complex list below. Never display center IDs/names or scores.
+
+- GOODNESS: "важность оставаться хорошим человеком и не разрушить чужое хорошее отношение"
+- AUTONOMY: "важность оставаться сильным и самостоятельным человеком"
+- PROFESSIONAL: "сохранить привычное представление о себе как о хорошем профессионале"
+- VISIBILITY: "не превратить собственную заметность в ощущение, что вы стали слишком большим, громким или самоуверенным"
+- CONTROL: "сохранить контроль и предсказуемость и не действовать без достаточной гарантии"
+- BELONGING: "сохранить привычное место среди людей и важные отношения"
+
+For pair, show one main approved question for each of the two centers, then the pair neutral observation (§34).
+
+## mixed_mode = complex
+
+Use when there are 3 or more mixed candidates (§24). Do not artificially choose two centers, use a fixed center priority, or use a random tie-break.
+
+### Heading
+
+Здесь сходятся сразу несколько тем
+
+### Body
+
+Ваши ответы сейчас не складываются в один или два достаточно различимых конфликта.
+
+Несколько возможных объяснений получают похожую поддержку.
+
+Это как раз тот случай, где автоматическая диагностика должна остановиться, а не выбрать за вас самую красивую версию.
+
+### Then
+
+По этим ответам пока нельзя достаточно уверенно сказать, что здесь первично, а что может быть следствием.
+
+### Optional human formulations
+
+Do not show internal center names or scores. At most three of the most supported mixed candidates may be shown using the exact human formulations above, only if their order can be determined by these criteria in sequence:
+
+1. Higher score.
+2. Greater number of supported evidence dimensions.
+3. Higher score excluding the goal_area contribution.
+
+Do not add another tie-break criterion. If the criteria do not determine the display order or selection, omit the list. In particular, if an unresolved tie among more than three centers remains after all three criteria, do not choose arbitrarily: show no center list at all and use only the general complex mixed text.
+
+Do not show center-specific diagnostic questions. Follow with the complex neutral observation (§34), then optionally the ordinary unobtrusive bridge to an individual diagnostic session.
 
 ---
 
@@ -1330,11 +1367,13 @@ Do not sell aggressively from weak result.
 
 Never show center code/name.
 
-Show only the question.
+Show only the question, with a separate context quotation of the step/goal if needed (§11).
+
+MVP uses only the first, main approved question for each center. Alternatives below remain reference copy and are not selected automatically. Fixed references replace grammatical interpolation of free text.
 
 ## GOODNESS
 
-**Можно ли вам [ACTION] и выдержать, что кто-то после этого не подтвердит вашу хорошесть?**
+**Можно ли вам сделать этот шаг и выдержать, что кто-то после этого не подтвердит вашу хорошесть?**
 
 Alternative if relevant:
 
@@ -1344,7 +1383,7 @@ Alternative if relevant:
 
 ## AUTONOMY
 
-**Если вы [ACTION], что произойдёт с образом человека, который всегда справляется сам?**
+**Если вы сделаете этот шаг, что произойдёт с образом человека, который всегда справляется сам?**
 
 Alternative:
 
@@ -1354,7 +1393,7 @@ Alternative:
 
 ## PROFESSIONAL
 
-**Что в вашем сегодняшнем представлении о хорошем профессионале пока несовместимо с тем, что требует [GOAL]?**
+**Что в вашем сегодняшнем представлении о хорошем профессионале пока несовместимо с тем, что требует эта цель?**
 
 Alternative:
 
@@ -1364,7 +1403,7 @@ Alternative:
 
 ## VISIBILITY
 
-**Можно ли вам [ACTION] и не превращать собственную заметность в доказательство высокомерия?**
+**Можно ли вам сделать этот шаг и не превращать собственную заметность в доказательство высокомерия?**
 
 Alternative:
 
@@ -1384,7 +1423,7 @@ Alternative:
 
 ## BELONGING
 
-**Если вы действительно получите [GOAL], какое привычное место среди других может перестать быть вашим?**
+**Если вы действительно достигнете этой цели, какое привычное место среди других может перестать быть вашим?**
 
 Alternative:
 
@@ -1394,7 +1433,7 @@ Alternative:
 
 # 34. FREE MICRO-INTERVENTION AFTER RESULT
 
-Before sales CTA, show:
+For MODERATE and STRONG, before the optional session CTA, show:
 
 ## Heading
 
@@ -1402,11 +1441,11 @@ Before sales CTA, show:
 
 ## Body
 
-В следующий раз, когда вы снова окажетесь перед:
+Вы назвали следующим шагом:
 
 **[ACTION_TEXT]**
 
-не спрашивайте сразу:
+В следующий раз, когда вы снова окажетесь перед этим шагом, не спрашивайте сразу:
 
 > Почему я опять не могу?
 
@@ -1419,6 +1458,18 @@ Before sales CTA, show:
 **Что станет неправдой обо мне, если я всё-таки сделаю новый выбор?**
 
 **Какую цену я плачу за то, чтобы старая версия меня оставалась целой?**
+
+## Neutral observation for MIXED pair / optional for WEAK
+
+For MIXED pair, use this instead of the identity-preservation questions above. WEAK may show it after the alternative checks in §31:
+
+"В следующий раз просто заметьте, что происходит между намерением сделать шаг и реальным решением."
+
+## Neutral observation for MIXED complex
+
+For MIXED complex, show this instead of center-specific diagnostic questions, the pair observation, or the identity-preservation questions above:
+
+"В следующий раз, когда вы окажетесь перед своим следующим шагом, попробуйте заметить не только то, что вы делаете, но и что именно становится психологически трудным в этот момент: чужая реакция, потеря контроля, изменение представления о себе, новая роль или изменение вашего места среди других."
 
 ---
 
@@ -1956,7 +2007,7 @@ The first MVP does not require a custom backend.
 
 Do not invent a backend.
 
-Before implementation of final submission behavior, choose the simplest GitHub-Pages-compatible option.
+For v1.1, implement only form UI and client-side validation later. Submission integration remains an explicit TODO/configuration point. Do not choose an external service yet.
 
 If no external form endpoint has been explicitly approved:
 
@@ -1971,7 +2022,7 @@ Never expose API keys in the repository.
 
 # 51. SUCCESS MESSAGE
 
-After a genuinely successful submission:
+Show only after a real endpoint is configured and submission genuinely succeeds. Until then, do not show this success state.
 
 ## Heading
 
@@ -2062,7 +2113,7 @@ Requirements:
 - headings must wrap gracefully;
 - long Russian words must not break layout;
 - sticky elements only if genuinely useful;
-- no intrusive sticky sales CTA during diagnostic.
+- no sticky session CTA before the diagnostic result.
 
 ---
 
@@ -2326,22 +2377,30 @@ The MVP is ready when:
 - [ ] Hero renders correctly on mobile.
 - [ ] All approved content sections are present.
 - [ ] Diagnostic begins without registration.
-- [ ] One question is shown at a time.
+- [ ] One main question per stage; follow-ups stay on that screen and progress remains 1/9–9/9.
 - [ ] Back navigation preserves answers.
 - [ ] goal_unknown branch works.
 - [ ] action_unknown branch works.
 - [ ] weak result works.
 - [ ] moderate result works.
 - [ ] strong result works.
-- [ ] mixed result works.
+- [ ] Mixed pair works for exactly 2 mixed candidates.
+- [ ] Mixed complex works for 3+ mixed candidates, with the approved complex text and neutral observation and no center-specific questions.
+- [ ] A full tie never causes arbitrary center selection; unresolved display ranking omits the center list, including ties among more than three centers.
 - [ ] no personality type is shown.
 - [ ] no Dominant Identifier is claimed.
 - [ ] no numerical psychology percentages are shown.
-- [ ] center-specific question is generated appropriately.
+- [ ] Moderate/strong show one main center question; mixed pair shows one for each of its two centers; mixed complex shows none; no automatic alternative questions.
 - [ ] free text is not sent to analytics.
-- [ ] result appears before session CTA.
+- [ ] Diagnostic insight precedes its own session CTA; long-form sections remain scrollable and unlocked.
 - [ ] "Разобрать мою ситуацию" scrolls to application.
-- [ ] form validation works.
+- [ ] Required free text and every selected other are validated; avoidance_sentence is optional.
+- [ ] Q4 requires primary selection for two threats; Q7 allows only one answer.
+- [ ] Fixed scoring and dimension thresholds work; action_partial never produces strong.
+- [ ] Free text is quoted separately without grammatical interpolation.
+- [ ] Weak skips Screen 3 and identity-preservation intervention; mixed pair uses both human formulations and pair neutral observation; mixed complex uses its own neutral observation and shows at most three human formulations only when the approved ranking determines their order and selection.
+- [ ] Form validation works; submission is TODO until configured and never shows fake success.
+- [ ] "Читать SVETA MINDSET" is omitted until its URL is supplied.
 - [ ] mobile layout works at 360px.
 - [ ] desktop reading width is comfortable.
 - [ ] no horizontal scroll.
@@ -2373,4 +2432,18 @@ That final thought is the natural bridge to the diagnostic session.
 
 ---
 
-End of SITE_SPEC v1.0
+# 69. CHANGELOG
+
+## v1.1 — clarification changes
+
+- Defined mixed candidates (score >= 5, at least 2 evidence dimensions, within 2 points of the highest score), pair for exactly 2 and complex for 3+; added mixed_mode, approved complex copy and observation, optional top-three formulation ranking with no arbitrary tie-break, and separate acceptance checks.
+- Added KNOWING VS TOLERATING to the site order and clarified unlocked long-form content and CTA gating.
+- Fixed nine-stage progress, same-screen follow-ups, required/optional text, Q4 primary/secondary threats, and single-choice Q7.
+- Fixed scoring weights, multidimensional mappings, evidence thresholds, and action_partial / action_unknown / unmapped other behavior.
+- Defined result branches, mixed human formulations, main center questions, weak alternative checks, and neutral observation.
+- Clarified separate free-text quotations, fixed grammatical references, and self_loss preference with threat fallback.
+- Limited future form implementation to UI and validation, kept submission as TODO, prohibited fake success, and deferred the reading link until its URL is supplied.
+
+---
+
+End of SITE_SPEC v1.1
