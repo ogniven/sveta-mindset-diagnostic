@@ -200,3 +200,49 @@ blockquote { font-family: var(--serif); font-size: 25px; line-height: 1.4; }
 }
 
 .knowing .knowledge { font-weight: 600; }
+
+/* Focused, in-page diagnostic workspace. */
+.diagnostic-workspace { max-width: 680px; margin: 64px auto 0; padding-top: 32px; border-top: 1px solid var(--accent); scroll-margin-top: 24px; }
+.diagnostic-workspace [hidden] { display: none; }
+.diagnostic-progress, .diagnostic-hint { color: var(--muted); font: 15px/1.5 var(--sans); }
+.diagnostic-workspace progress { display: block; width: 100%; height: 3px; margin: 16px 0 36px; border: 0; background: var(--line); color: var(--accent); appearance: none; }
+.diagnostic-workspace progress::-webkit-progress-bar { background: var(--line); }
+.diagnostic-workspace progress::-webkit-progress-value { background: var(--accent); }
+.diagnostic-workspace progress::-moz-progress-bar { background: var(--accent); }
+.diagnostic-workspace fieldset { min-width: 0; padding: 0; margin: 0; border: 0; }
+.diagnostic-workspace legend, .diagnostic-field > label, .diagnostic-context, .diagnostic-workspace h3 { display: block; width: 100%; font: 400 clamp(26px, 3vw, 34px)/1.3 var(--serif); letter-spacing: -0.015em; overflow-wrap: anywhere; }
+.diagnostic-workspace legend { padding: 0; margin-bottom: 16px; }
+.diagnostic-workspace .diagnostic-hint { margin: 12px 0 20px; }
+.diagnostic-option { display: flex; align-items: flex-start; gap: 14px; padding: 17px 10px; min-height: 60px; border-top: 1px solid var(--line); cursor: pointer; font-size: 18px; line-height: 1.5; }
+.diagnostic-option:last-of-type { border-bottom: 1px solid var(--line); }
+.diagnostic-option input { flex: 0 0 auto; width: 20px; height: 20px; margin: 4px 0 0; accent-color: var(--accent); }
+.diagnostic-option span { min-width: 0; overflow-wrap: anywhere; }
+.diagnostic-option:has(input:checked) { background: var(--tint); }
+.diagnostic-option:has(input:disabled) { color: var(--muted); cursor: default; }
+.diagnostic-workspace :is(input, textarea, button):focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.diagnostic-field { margin-top: 32px; }
+.diagnostic-form > .diagnostic-field:first-child { margin-top: 0; }
+.diagnostic-workspace textarea { display: block; width: 100%; min-height: 150px; margin-top: 20px; padding: 16px; resize: vertical; border: 1px solid var(--muted); border-radius: 2px; background: var(--paper); color: var(--ink); font: 18px/1.55 var(--sans); }
+.diagnostic-workspace textarea::placeholder { color: var(--muted); opacity: 1; }
+.diagnostic-workspace textarea[name="action_text"] { min-height: 195px; }
+.diagnostic-field + fieldset, #threat-followup:not(:empty) { margin-top: 36px; }
+.diagnostic-error { min-height: 3em; margin-top: 12px; padding-left: 12px; border-left: 2px solid transparent; color: var(--accent); font-size: 16px; line-height: 1.5; }
+.diagnostic-error:not(:empty) { border-left-color: var(--accent); }
+.diagnostic-navigation { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.diagnostic-navigation .button { margin: 0; min-width: 0; flex: 1 1 220px; cursor: pointer; }
+.diagnostic-navigation .diagnostic-back { flex: 0 1 110px; }
+.diagnostic-workspace .diagnostic-back { background: transparent; color: var(--accent); }
+.diagnostic-workspace .diagnostic-back:hover { background: var(--tint); }
+.diagnostic-quote { margin-block: 24px 32px; padding-left: 20px; border-left: 2px solid var(--accent); color: var(--accent); font: 400 clamp(26px, 3vw, 34px)/1.4 var(--serif); overflow-wrap: anywhere; white-space: pre-wrap; }
+.diagnostic-message { margin-top: 28px; }
+.diagnostic-quiet { padding-block: 16px 24px; }
+.diagnostic-quiet .diagnostic-field { margin-top: 32px; }
+.diagnostic-quiet textarea { min-height: 190px; margin-top: 32px; }
+@media (min-width: 700px) { .diagnostic-workspace { margin-top: 80px; padding-top: 40px; } }
+
+.result-feedback { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+.diagnostic-workspace .result-feedback legend { font-size: 24px; }
+.result-restart { max-width: 100%; }
+.button { cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

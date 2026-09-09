@@ -134,7 +134,7 @@ Main order:
 16. Diagnostic session offer
 17. What the person receives
 18. Final CTA
-19. Application form
+19. Launch MVP intake: direct Telegram CTA (no application form)
 20. Footer / SVETA MINDSET
 
 Do not reorder without explicit approval.
@@ -1939,11 +1939,13 @@ Use generous white space.
 
 Разобрать мою ситуацию
 
-Scroll to application form.
+Open https://t.me/sveta_mindset in a new tab with target="_blank" and rel="noopener noreferrer". Do not attach diagnostic answers.
 
 ---
 
 # 49. APPLICATION FORM
+
+Launch MVP override (2026-09-09): intake uses the direct Telegram CTA https://t.me/sveta_mindset, labelled "Разобрать мою ситуацию". No application form, database, submission endpoint, or automatic answer transfer is used for launch. The form copy in §§49–51 remains reference for a possible later version and is not implemented.
 
 ## Heading
 
@@ -2354,7 +2356,7 @@ Phase 5:
 - implement personalized result screens.
 
 Phase 6:
-- implement application form UI.
+- connect the launch Telegram CTA; no application form.
 
 Phase 7:
 - mobile QA.
@@ -2393,13 +2395,13 @@ The MVP is ready when:
 - [ ] Moderate/strong show one main center question; mixed pair shows one for each of its two centers; mixed complex shows none; no automatic alternative questions.
 - [ ] free text is not sent to analytics.
 - [ ] Diagnostic insight precedes its own session CTA; long-form sections remain scrollable and unlocked.
-- [ ] "Разобрать мою ситуацию" scrolls to application.
+- [ ] "Разобрать мою ситуацию" opens https://t.me/sveta_mindset safely in a new tab without answers.
 - [ ] Required free text and every selected other are validated; avoidance_sentence is optional.
 - [ ] Q4 requires primary selection for two threats; Q7 allows only one answer.
 - [ ] Fixed scoring and dimension thresholds work; action_partial never produces strong.
 - [ ] Free text is quoted separately without grammatical interpolation.
 - [ ] Weak skips Screen 3 and identity-preservation intervention; mixed pair uses both human formulations and pair neutral observation; mixed complex uses its own neutral observation and shows at most three human formulations only when the approved ranking determines their order and selection.
-- [ ] Form validation works; submission is TODO until configured and never shows fake success.
+- [ ] Launch intake uses Telegram; no inactive form or fake submission.
 - [ ] "Читать SVETA MINDSET" is omitted until its URL is supplied.
 - [ ] mobile layout works at 360px.
 - [ ] desktop reading width is comfortable.
@@ -2433,6 +2435,10 @@ That final thought is the natural bridge to the diagnostic session.
 ---
 
 # 69. CHANGELOG
+
+## Launch MVP — 2026-09-09
+
+- Replaced planned form intake with the direct Telegram CTA https://t.me/sveta_mindset. Both result and long-form CTAs open safely in a new tab; diagnostic answers remain in browser memory and are never attached. Form implementation and submission are outside launch scope.
 
 ## v1.1 — clarification changes
 

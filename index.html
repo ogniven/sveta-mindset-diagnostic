@@ -9,7 +9,9 @@
   <meta property="og:description" content="Вы знаете, чего хотите и что нужно сделать, но продолжаете действовать по-старому? Мини-диагностика поможет увидеть, что ваш привычный сценарий может сохранять.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <main>
@@ -150,9 +152,11 @@
             <p>Это не диагноз.</p>
             <p>Результат — рабочая гипотеза.</p>
           </div>
-          <!-- Phase 1 ends here. The diagnostic is intentionally not implemented. -->
-          <button class="button" type="button" disabled>Начать диагностику</button>
+          <button class="button" id="diagnostic-start" type="button" aria-controls="diagnostic-workspace" aria-expanded="false">Начать диагностику</button>
+          <p class="note">Ответы мини-диагностики используются только для формирования результата на этой странице и не отправляются мне автоматически.</p>
+          <noscript><p class="note">Для мини-диагностики включите JavaScript в браузере.</p></noscript>
         </div>
+        <section id="diagnostic-workspace" class="diagnostic-workspace" aria-labelledby="diagnostic-title" hidden></section>
       </div>
     </section>
 
@@ -421,10 +425,27 @@
         <h2 id="final-cta-title">Возможно, вам не нужно ещё сильнее себя заставлять</h2>
         <div class="editorial-body">
           <p>Возможно, сначала нужно увидеть, почему старый выбор до сих пор ощущается более «вашим», чем новая жизнь.</p>
-          <button class="button" type="button" disabled>Разобрать мою ситуацию</button>
+          <a class="button" href="https://t.me/sveta_mindset" target="_blank" rel="noopener noreferrer">Разобрать мою ситуацию</a>
+          <p class="note">Напишите мне в Telegram: «Хочу разобрать ситуацию».</p>
         </div>
       </div>
     </section>
   </main>
+  <footer class="section editorial">
+    <div class="container">
+      <h2>SVETA MINDSET</h2>
+      <div class="reading">
+        <p>Меня интересует не только:</p>
+        <blockquote class="diagnostic-quote">«Почему человек делает то, что ему невыгодно?»</blockquote>
+        <p>Мне интереснее несколько вопросов глубже:</p>
+        <p>Что это поведение для него сохраняет?</p>
+        <p>Что благодаря ему остаётся правдой о самом себе?</p>
+        <p>И какой жизненный сценарий из этого снова получается?</p>
+        <p>Потому что иногда человек уже прекрасно знает, какой жизни хочет.</p>
+        <p>Остаётся понять:</p>
+        <p class="statement">какую версию себя он всё ещё боится оставить в предыдущей.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
