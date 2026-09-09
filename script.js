@@ -540,7 +540,7 @@ function buildResults() {
     paragraph('На встрече мы не обязаны подтвердить гипотезу сайта.') +
     paragraph('Мне нужна не красивая теория о вас.') +
     paragraph('Мне нужно понять, что действительно происходит в вашей ситуации.') +
-    `<a class="button ${weak ? 'diagnostic-back' : ''}" href="https://t.me/sveta_mindset" target="_blank" rel="noopener noreferrer">Разобрать мою ситуацию</a>` +
+    `<a class="button ${weak ? 'diagnostic-back' : ''}" href="https://t.me/m/EJlYNpuDNTJi" target="_blank" rel="noopener noreferrer">Разобрать мою ситуацию</a>` +
     '<p class="note">Напишите мне в Telegram: «Хочу разобрать ситуацию».</p>' +
     '<div class="result-feedback">' + choices('feedback', 'Насколько этот вывод попал в вашу ситуацию?', [['exact','Очень точно'],['partial','Есть что-то похожее'],['uncertain','Не уверен(а)'],['wrong','Совсем не про меня']]) + '</div>'));
   resultIndex = 0;
