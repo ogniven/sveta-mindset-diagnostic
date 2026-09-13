@@ -42,6 +42,10 @@
     .lead{font-size:clamp(19px,2.3vw,25px);max-width:760px;margin:28px 0 0;color:#3c3834}
     .sublead{max-width:690px;color:var(--muted);margin:18px 0 0;font-size:16px}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .privacy-note{
+      margin:15px 0 0;max-width:760px;color:var(--muted);font-size:14px;line-height:1.5;
+    }
+    .privacy-note strong{color:var(--ink)}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       min-height:50px;padding:0 20px;border-radius:999px;text-decoration:none;
@@ -86,9 +90,16 @@
     details[open] .plus{transform:rotate(45deg)}
     .content{padding:0 24px 26px 82px}
     .content p{margin:0 0 14px;color:#47413c}
-    .options{display:grid;gap:9px;margin:16px 0}
-    .option{padding:13px 14px;border-radius:12px;background:#faf7f2;border:1px solid #e8e0d7}
-    .option strong{display:block;margin-bottom:3px}
+    .options{display:grid;gap:10px;margin:16px 0}
+    .options::before{
+      content:"Возможные ответы для самопроверки — нажимать на них не нужно.";
+      display:block;margin:0 0 2px;color:var(--muted);font-size:13px;font-weight:700;
+    }
+    .option{
+      padding:9px 0 9px 14px;border:0;border-left:2px solid var(--line);
+      border-radius:0;background:transparent;cursor:default;
+    }
+    .option strong{display:block;margin-bottom:3px;color:var(--ink)}
     .note{margin:18px 0 0;padding:16px 18px;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:3px 12px 12px 3px;font-weight:750}
     .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
     .split>div{padding:16px;border:1px solid var(--line);border-radius:14px;background:#faf7f2}
@@ -138,6 +149,7 @@
         <a class="btn" href="#map">Пройти карту ↓</a>
         <a class="btn secondary" href="mindset-map.pdf" target="_blank" rel="noopener">Сохранить PDF</a>
       </div>
+      <p class="privacy-note"><strong>Это не тест.</strong> Ничего выбирать и отправлять не нужно. Проходите вопросы для себя, держа в голове одну конкретную ситуацию. Сайт не записывает и не сохраняет ваши ответы.</p>
     </section>
 
     <section class="wrap intro-card">
@@ -154,6 +166,7 @@
         </div>
       </div>
       <div class="start"><strong>СТАРТ</strong>Есть что-то, что я давно хочу изменить. Я примерно понимаю, что нужно сделать. Но не делаю.<br><br><strong>Могу ли я назвать одно конкретное следующее действие?</strong><br>Нет → сначала определите, чего не хватает: информации, навыка, ресурсов или помощи.<br>Да → ещё информация может оказаться не решением.</div>
+      <p class="privacy-note"><strong>Как пользоваться вариантами ниже:</strong> это примеры для самопроверки, а не кнопки ответа. Просто отмечайте для себя, что ближе к вашей ситуации.</p>
     </section>
 
     <section class="wrap" id="map">
