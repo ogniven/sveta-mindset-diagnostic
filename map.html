@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Диагностическая карта SVETA MINDSET: «Я знаю, что делать. Почему я не делаю?»" />
+  <title>Я знаю, что делать. Почему я не делаю? — SVETA MINDSET</title>
+  <style>
+    :root{
+      --bg:#f7f3ed;
+      --paper:#fffdf9;
+      --ink:#252321;
+      --muted:#6e6962;
+      --line:#ddd4c9;
+      --accent:#9b7654;
+      --accent-soft:#eee4d8;
+      --shadow:0 18px 50px rgba(46,37,28,.08);
+      --radius:22px;
+      --max:960px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+    .wrap{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
+    .brand{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:22px 0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    }
+    .brand strong{font-weight:800}
+    .brand span{color:var(--muted);letter-spacing:.02em;text-transform:none;font-size:13px}
+    .hero{padding:54px 0 34px}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+    h1{font-size:clamp(40px,7vw,78px);line-height:.98;letter-spacing:-.055em;margin:0;max-width:880px}
+    .lead{font-size:clamp(19px,2.3vw,25px);max-width:760px;margin:28px 0 0;color:#3c3834}
+    .sublead{max-width:690px;color:var(--muted);margin:18px 0 0;font-size:16px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:50px;padding:0 20px;border-radius:999px;text-decoration:none;
+      font-weight:750;border:1px solid var(--ink);transition:.2s ease;background:var(--ink);color:white;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.09)}
+    .btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}
+    .intro-card{
+      background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);
+      border-radius:var(--radius);padding:28px;margin:34px 0 26px;
+    }
+    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:var(--accent);margin-bottom:8px}
+    .intro-card h2{font-size:28px;line-height:1.08;margin:0 0 10px;letter-spacing:-.03em}
+    .intro-card p{margin:0;color:var(--muted)}
+    .start{
+      border-left:4px solid var(--accent);background:var(--accent-soft);
+      padding:18px 20px;border-radius:4px 14px 14px 4px;margin-top:22px;
+    }
+    .start strong{display:block;margin-bottom:5px}
+    .quicknav{display:grid;grid-template-columns:repeat(9,1fr);gap:7px;margin:28px 0 34px}
+    .quicknav a{
+      text-decoration:none;text-align:center;padding:9px 0;border-radius:999px;
+      background:var(--paper);border:1px solid var(--line);font-weight:800;font-size:13px;
+    }
+    .section-title{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:50px 0 16px;font-weight:800}
+    details{
+      background:var(--paper);border:1px solid var(--line);border-radius:18px;
+      margin:12px 0;overflow:hidden;box-shadow:0 8px 30px rgba(46,37,28,.035)
+    }
+    summary{
+      cursor:pointer;list-style:none;padding:23px 24px;display:grid;
+      grid-template-columns:44px 1fr 28px;gap:14px;align-items:start;font-weight:800;
+    }
+    summary::-webkit-details-marker{display:none}
+    .stepno{
+      width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+      display:flex;align-items:center;justify-content:center;font-weight:900
+    }
+    .sum-title{font-size:clamp(18px,2.4vw,24px);line-height:1.15;letter-spacing:-.025em;padding-top:5px}
+    .plus{font-size:28px;line-height:1;color:var(--muted);transition:.2s transform;padding-top:5px}
+    details[open] .plus{transform:rotate(45deg)}
+    .content{padding:0 24px 26px 82px}
+    .content p{margin:0 0 14px;color:#47413c}
+    .options{display:grid;gap:9px;margin:16px 0}
+    .option{padding:13px 14px;border-radius:12px;background:#faf7f2;border:1px solid #e8e0d7}
+    .option strong{display:block;margin-bottom:3px}
+    .note{margin:18px 0 0;padding:16px 18px;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:3px 12px 12px 3px;font-weight:750}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+    .split>div{padding:16px;border:1px solid var(--line);border-radius:14px;background:#faf7f2}
+    .split h4{margin:0 0 9px;font-size:14px;text-transform:uppercase;letter-spacing:.04em}
+    ul{padding-left:20px;margin:8px 0} li{margin:5px 0}
+    .one-screen{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin:52px 0}
+    .one-screen h2{font-size:32px;letter-spacing:-.035em;margin:0 0 7px}
+    .one-screen>p{color:var(--muted);margin:0 0 18px}
+    .route{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .route-row{display:grid;grid-template-columns:50px 1fr;border-bottom:1px solid var(--line)}
+    .route-row:last-child{border-bottom:0}.route-num{display:flex;justify-content:center;align-items:center;background:var(--accent-soft);font-weight:850;color:var(--accent)}
+    .route-copy{padding:13px 15px}.route-copy strong{display:block}.route-copy span{color:var(--muted);font-size:14px}
+    .cta{
+      margin:56px 0 92px;background:var(--ink);color:white;border-radius:28px;padding:38px;
+      position:relative;overflow:hidden;
+    }
+    .cta:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,.055);right:-70px;top:-80px}
+    .cta h2{font-size:clamp(30px,5vw,50px);line-height:1.02;letter-spacing:-.045em;margin:0 0 15px;max-width:690px}
+    .cta p{max-width:690px;color:#d9d5d0;margin:0 0 23px;font-size:17px}
+    .cta .btn{background:white;color:var(--ink);border-color:white;position:relative;z-index:1}
+    .cta .btn.secondary{background:transparent;color:white;border-color:#5e5a55}
+    footer{border-top:1px solid var(--line);padding:22px 0 90px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:18px}
+    .mobile-cta{display:none}
+    @media (max-width:720px){
+      .wrap{width:min(calc(100% - 22px),var(--max))}
+      .brand span{display:none}.hero{padding-top:34px}.lead{margin-top:22px}
+      .intro-grid,.split{grid-template-columns:1fr}.intro-card{padding:22px}.quicknav{grid-template-columns:repeat(5,1fr)}
+      summary{grid-template-columns:38px 1fr 22px;padding:18px 16px;gap:10px}.stepno{width:36px;height:36px}.content{padding:0 16px 21px 16px}
+      .cta{padding:27px 22px;margin-bottom:110px}.cta .hero-actions{display:grid}.cta .btn{width:100%}
+      footer{padding-bottom:105px;display:block}.mobile-cta{display:block;position:fixed;z-index:30;left:10px;right:10px;bottom:10px}.mobile-cta .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap brand">
+    <strong>SVETA MINDSET</strong>
+    <span>Вижу механизм под привычными проблемами</span>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div class="eyebrow">Диагностическая карта</div>
+      <h1>Я знаю, что делать.<br>Почему я не делаю?</h1>
+      <p class="lead">Карта для тех, кому уже не помогает ещё одно объяснение себя.</p>
+      <p class="sublead">Не всегда человеку не хватает знаний. Иногда он уже знает достаточно — но собственное мышление помогает не встречаться с тем, что произойдёт после действия.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#map">Пройти карту ↓</a>
+        <a class="btn secondary" href="mindset-map.pdf" target="_blank" rel="noopener">Сохранить PDF</a>
+      </div>
+    </section>
+
+    <section class="wrap intro-card">
+      <div class="intro-grid">
+        <div>
+          <div class="label">Как проходить</div>
+          <h2>Возьмите одну реальную ситуацию.</h2>
+          <p>Разговор, отношения, работу, деньги, проявленность, решение, продажу или границы. Не берите «всю жизнь» сразу.</p>
+        </div>
+        <div>
+          <div class="label">Два вопроса на входе</div>
+          <h2>Что я хочу изменить?</h2>
+          <p>И какое конкретное действие я откладываю? Отвечайте не так, как звучит разумно, а так, как есть.</p>
+        </div>
+      </div>
+      <div class="start"><strong>СТАРТ</strong>Есть что-то, что я давно хочу изменить. Я примерно понимаю, что нужно сделать. Но не делаю.<br><br><strong>Могу ли я назвать одно конкретное следующее действие?</strong><br>Нет → сначала определите, чего не хватает: информации, навыка, ресурсов или помощи.<br>Да → ещё информация может оказаться не решением.</div>
+    </section>
+
+    <section class="wrap" id="map">
+      <nav class="quicknav" aria-label="Шаги карты">
+        <a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">9</a>
+      </nav>
+      <div class="section-title">Пройдите 9 развилок</div>
+
+      <details id="s1" open>
+        <summary><span class="stepno">1</span><span class="sum-title">Что станет возможным, если я действительно это сделаю?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <p>Не спрашивайте пока «почему я боюсь». Спросите, какое событие станет возможным после действия.</p>
+          <div class="options">
+            <div class="option"><strong>Я могу получить отказ</strong>Бездействие сохраняет приятную версию: «у меня могло бы получиться».</div>
+            <div class="option"><strong>Я могу ошибиться</strong>Пока решение не принято, можно сохранять фантазию об идеальном выборе.</div>
+            <div class="option"><strong>Станет виден мой реальный уровень</strong>Подготовка позволяет оставаться потенциально хорошим. Действие делает уровень измеримым.</div>
+            <div class="option"><strong>Кто-то может быть мной недоволен</strong>Возможно, задача не только сказать «нет», а выдержать человека, которому ваше «нет» не понравится.</div>
+            <div class="option"><strong>Мне придётся попросить</strong>Просьба создаёт возможность услышать «нет» и обнаружить собственную нуждаемость.</div>
+            <div class="option"><strong>Мне придётся назвать цену</strong>Придётся встретиться не только с деньгами, но и с чужой оценкой вашей ценности.</div>
+            <div class="option"><strong>Мне придётся что-то потерять</strong>Новое часто невозможно получить, сохранив все преимущества старого.</div>
+          </div>
+          <div class="note">Возможно, вы не избегаете действия. Вы избегаете того, что придётся выдержать после него.</div>
+        </div>
+      </details>
+
+      <details id="s2">
+        <summary><span class="stepno">2</span><span class="sum-title">Чем я называю своё бездействие?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <div class="options">
+            <div class="option"><strong>«Я ещё не готова»</strong>Что конкретно должно появиться? Есть измеримый ответ — или «готовность» означает «мне больше не будет страшно»?</div>
+            <div class="option"><strong>«Мне надо ещё подумать»</strong>Что изменилось после предыдущих десяти размышлений? Появилось действие — или только более убедительное объяснение?</div>
+            <div class="option"><strong>«Мне нужно сначала разобраться в себе»</strong>Что именно вы пока не знаете? Этот ответ действительно изменит следующее действие?</div>
+            <div class="option"><strong>«Сейчас неподходящее время»</strong>Какие обстоятельства должны измениться? Вы можете на них влиять?</div>
+            <div class="option"><strong>«Я такой человек»</strong>Это условие — или объяснение, освобождающее от выбора?</div>
+            <div class="option"><strong>«Я просто устала»</strong>Тогда нужен отдых. После отдыха действие возвращается? Если нет — возможно, дело было не только в усталости.</div>
+          </div>
+          <div class="note">Хорошее объяснение и хорошее решение — не одно и то же.</div>
+        </div>
+      </details>
+
+      <details id="s3">
+        <summary><span class="stepno">3</span><span class="sum-title">Моё мышление приближает меня к реальности или защищает от неё?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <div class="split">
+            <div><h4>Мышление работает на меня</h4><ul><li>фактов становится больше</li><li>варианты яснее</li><li>неопределённость уменьшается</li><li>появляется решение</li><li>появляется следующее действие</li><li>я допускаю, что могу ошибаться</li></ul></div>
+            <div><h4>Мышление сохраняет старое</h4><ul><li>объяснений становится больше</li><li>вопросов становится больше</li><li>решение отодвигается</li><li>я ищу гарантии</li><li>мне нужно чужое подтверждение</li><li>новое обстоятельство становится причиной ничего не решать</li></ul></div>
+          </div>
+          <div class="note">После всех моих размышлений у меня стало больше доступных действий — или меньше?</div>
+        </div>
+      </details>
+
+      <details id="s4">
+        <summary><span class="stepno">4</span><span class="sum-title">Я пытаюсь решить проблему — или изменить условие?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <p><strong>Могу ли я непосредственно изменить это?</strong> Если да — что конкретно зависит от меня? Если нет — возможно, это условие. Тогда нужно менять не реальность, а вопрос.</p>
+          <div class="options">
+            <div class="option"><strong>Партнёр меня не понимает</strong>Не: «Как заставить его наконец меня понять?»<br>А: «Что я буду делать, учитывая его реальную способность понимать меня?»</div>
+            <div class="option"><strong>Меня могут осуждать за блог</strong>Не: «Как сделать, чтобы никто не осуждал?»<br>А: «Буду ли я публиковать, если некоторые люди действительно будут меня осуждать?»</div>
+            <div class="option"><strong>Продажи</strong>Не: «Как продавать и никогда не получать отказов?»<br>А: «Могу ли я продавать в реальности, где часть людей скажет нет?»</div>
+          </div>
+          <div class="note">Иногда решение не убирает неприятную реальность. Оно определяет, что вы будете делать с её учётом.</div>
+        </div>
+      </details>
+
+      <details id="s5">
+        <summary><span class="stepno">5</span><span class="sum-title">Не пытаюсь ли я получить новое, сохранив старую эмоциональную безопасность?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <ul><li>Хочу проявляться — но не хочу выглядеть нелепо.</li><li>Хочу продавать — но не хочу слышать «нет».</li><li>Хочу поднять цену — но не хочу потерять тех, кому дорого.</li><li>Хочу говорить прямо — но не хочу, чтобы на меня обижались.</li><li>Хочу быть самостоятельной — но не хочу ошибаться.</li><li>Хочу близости — но не хочу нуждаться.</li><li>Хочу нового уровня — но не хочу снова оказаться новичком.</li><li>Хочу изменить жизнь — но хочу, чтобы окружающие продолжили реагировать на меня по-старому.</li></ul>
+          <div class="note">Какую цену нового результата я пытаюсь исключить из сделки?</div>
+        </div>
+      </details>
+
+      <details id="s6">
+        <summary><span class="stepno">6</span><span class="sum-title">Чьей реакции я жду, прежде чем разрешить себе считать решение правильным?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <p>Если я сделаю это, а другой человек не похвалит, не поблагодарит, не поймёт, обидится, откажет, не выберет, не заметит или скажет, что я ошиблась — <strong>я всё ещё хочу это сделать?</strong></p>
+          <div class="options"><div class="option"><strong>Да</strong>Возможно, это действительно мой выбор.</div><div class="option"><strong>Нет</strong>Возможно, внутри решения спрятан договор: «Я сделаю X, если ты в ответ дашь мне Y».</div></div>
+          <div class="note">Иногда мы называем выбором действие, последнюю точку в котором должен поставить другой человек.</div>
+        </div>
+      </details>
+
+      <details id="s7">
+        <summary><span class="stepno">7</span><span class="sum-title">Не защищаю ли я свою «хорошесть» вместо поиска истины?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <div class="split"><div><h4>Исследую</h4><ul><li>интересуюсь</li><li>проверяю факты</li><li>могу сказать «я ошибалась»</li></ul></div><div><h4>Защищаюсь</h4><ul><li>объясняю, почему другой не понимает</li><li>ищу аргумент в свою пользу</li><li>обесцениваю источник</li><li>воспринимаю ошибку как поражение</li></ul></div></div>
+          <div class="note">Я сейчас пытаюсь понять, что правда — или доказать, что права я? Мышление может позволить себе проиграть спор. Правота — нет.</div>
+        </div>
+      </details>
+
+      <details id="s8">
+        <summary><span class="stepno">8</span><span class="sum-title">Финальная проверка: я уже знаю достаточно?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <p><strong>1.</strong> Какое действие я уже знаю, что могу сделать?</p><p><strong>2.</strong> Что мне придётся почувствовать или выдержать, если я его сделаю?</p><p><strong>3.</strong> Я действительно не знаю, что делать — или не согласна платить эту цену?</p>
+          <div class="options"><div class="option"><strong>Я не знаю</strong>Ищу информацию, навык или помощь.</div><div class="option"><strong>Я знаю, но не могу себе позволить последствия</strong>Работаю не над знаниями, а над тем, что мне трудно выдерживать.</div><div class="option"><strong>Я знаю и готова</strong>Одно конкретное действие в ближайшие 24 часа.</div></div>
+        </div>
+      </details>
+
+      <details id="s9">
+        <summary><span class="stepno">9</span><span class="sum-title">Что я сделаю теперь?</span><span class="plus">+</span></summary>
+        <div class="content">
+          <p>Если не знаете — доберите информацию, навык или помощь. Если знаете, но не выдерживаете последствия — работайте с последствиями. Если знаете и готовы — перенесите ответ из головы в реальность.</p>
+          <div class="note">Иногда следующий уровень понимания — перестать понимать и проверить свою версию действием.</div>
+        </div>
+      </details>
+    </section>
+
+    <section class="wrap one-screen">
+      <h2>Карта в одном экране</h2><p>Если хотите быстро вернуться к маршруту, начните отсюда.</p>
+      <div class="route">
+        <div class="route-row"><div class="route-num">1</div><div class="route-copy"><strong>Я знаю следующее действие?</strong><span>Нет → выяснить, чего не хватает. Да → дальше.</span></div></div>
+        <div class="route-row"><div class="route-num">2</div><div class="route-copy"><strong>Что станет возможным после действия?</strong><span>Отказ, ошибка, оценка, недовольство, потеря?</span></div></div>
+        <div class="route-row"><div class="route-num">3</div><div class="route-copy"><strong>Чем я называю бездействие?</strong><span>Неготовностью, анализом, усталостью, обстоятельствами?</span></div></div>
+        <div class="route-row"><div class="route-num">4</div><div class="route-copy"><strong>Мышление расширяет действия?</strong><span>После размышлений вариантов больше — или меньше?</span></div></div>
+        <div class="route-row"><div class="route-num">5</div><div class="route-copy"><strong>Это проблема или условие?</strong><span>Что здесь действительно зависит от меня?</span></div></div>
+        <div class="route-row"><div class="route-num">6</div><div class="route-copy"><strong>Какую цену нового я исключаю?</strong><span>Что я хочу получить, не выдерживая последствий?</span></div></div>
+        <div class="route-row"><div class="route-num">7</div><div class="route-copy"><strong>Чьей реакции я жду?</strong><span>Останется ли выбор моим без правильной реакции другого?</span></div></div>
+        <div class="route-row"><div class="route-num">8</div><div class="route-copy"><strong>Я ищу истину или защищаю правоту?</strong><span>Могу ли я допустить, что моя версия неверна?</span></div></div>
+        <div class="route-row"><div class="route-num">9</div><div class="route-copy"><strong>Что я сделаю теперь?</strong><span>Знание → помощь. Последствия → выдерживание. Готовность → действие.</span></div></div>
+      </div>
+    </section>
+
+    <section class="wrap cta" id="cta">
+      <h2>Застряли на одной из развилок?</h2>
+      <p>Иногда собственный механизм невозможно увидеть изнутри. Не потому, что не хватает ума, а потому, что этим же умом мы объясняем происходящее. На индивидуальную сессию можно принести одну конкретную ситуацию, в которой вы всё понимаете, но продолжаете возвращаться в ту же точку. Сессия платная; формат, стоимость и ближайшие варианты записи я пришлю в Telegram.</p>
+      <div class="hero-actions">
+        <a class="btn js-telegram" href="#">Записаться на индивидуальную сессию →</a>
+        <a class="btn secondary" href="mindset-map.pdf" target="_blank" rel="noopener">Сохранить карту PDF</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap"><strong>SVETA MINDSET</strong><span>Вижу механизм под привычными проблемами.</span></footer>
+
+  <div class="mobile-cta"><a class="btn js-telegram" href="#">Записаться на индивидуальную сессию →</a></div>
+
+  <script>
+    const TELEGRAM_URL = 'https://t.me/m/J5IMxP3bMmFi';
+    document.querySelectorAll('.js-telegram').forEach(a => {
+      if (TELEGRAM_URL.startsWith('http')) a.href = TELEGRAM_URL;
+      else a.addEventListener('click', e => { e.preventDefault(); });
+    });
+  </script>
+</body>
+</html>
