@@ -128,8 +128,17 @@
       .brand span{display:none}.hero{padding-top:34px}.lead{margin-top:22px}
       .intro-grid,.split{grid-template-columns:1fr}.intro-card{padding:22px}.quicknav{grid-template-columns:repeat(5,1fr)}
       summary{grid-template-columns:38px 1fr 22px;padding:18px 16px;gap:10px}.stepno{width:36px;height:36px}.content{padding:0 16px 21px 16px}
-      .cta{padding:27px 22px;margin-bottom:110px}.cta .hero-actions{display:grid}.cta .btn{width:100%}
-      footer{padding-bottom:105px;display:block}.mobile-cta{display:block;position:fixed;z-index:30;left:10px;right:10px;bottom:10px}.mobile-cta .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+      .cta{padding:27px 22px;margin-bottom:54px}.cta .hero-actions{display:grid}.cta .btn{width:100%}
+      footer{padding-bottom:34px;display:block}
+      .mobile-cta{
+        display:block;position:fixed;z-index:30;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));
+        opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+      }
+      .mobile-cta.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+      .mobile-cta .btn{
+        width:100%;min-height:58px;padding:13px 20px;border-radius:999px;font-size:16px;line-height:1.1;
+        box-shadow:0 8px 22px rgba(0,0,0,.18);
+      }
     }
   </style>
 </head>
@@ -300,13 +309,38 @@
 
   <footer class="wrap"><strong>SVETA MINDSET</strong><span>Вижу механизм под привычными проблемами.</span></footer>
 
-  <div class="mobile-cta"><a class="btn js-telegram" href="#">Записаться на индивидуальную сессию →</a></div>
+  <div class="mobile-cta"><a class="btn js-telegram" href="#">Записаться на сессию →</a></div>
 
   <script>
     const TELEGRAM_URL = 'https://t.me/m/J5IMxP3bMmFi';
     document.querySelectorAll('.js-telegram').forEach(a => {
       if (TELEGRAM_URL.startsWith('http')) a.href = TELEGRAM_URL;
       else a.addEventListener('click', e => { e.preventDefault(); });
+    });
+
+    // Mobile CTA: do not sell on the first screen. Show it only after the reader
+    // reaches the map, and hide it again when the final CTA block is on screen.
+    const mobileCta = document.querySelector('.mobile-cta');
+    const mapSection = document.querySelector('#map');
+    const finalCta = document.querySelector('#cta');
+
+    function updateMobileCta() {
+      if (!mobileCta || !mapSection || !finalCta || window.innerWidth > 720) {
+        mobileCta?.classList.remove('is-visible');
+        return;
+      }
+      const mapTop = mapSection.getBoundingClientRect().top;
+      const finalTop = finalCta.getBoundingClientRect().top;
+      const hasStartedMap = mapTop < window.innerHeight * 0.72;
+      const finalBlockReached = finalTop < window.innerHeight * 0.92;
+      mobileCta.classList.toggle('is-visible', hasStartedMap && !finalBlockReached);
+    }
+
+    window.addEventListener('scroll', updateMobileCta, {passive:true});
+    window.addEventListener('resize', updateMobileCta);
+    window.addEventListener('load', updateMobileCta);
+    document.querySelector('a[href="#map"]')?.addEventListener('click', () => {
+      setTimeout(updateMobileCta, 350);
     });
   </script>
 </body>
