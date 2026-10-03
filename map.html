@@ -325,11 +325,20 @@
     const mobileCta = document.querySelector('.mobile-cta');
     const mapSection = document.querySelector('#map');
     const finalCta = document.querySelector('#cta');
+const mapStartButton = document.querySelector('[data-umami-event="map_start"]');
+
+let mapStarted = false;
 let mapCompletedTracked = false;
+
+if (mapStartButton) {
+  mapStartButton.addEventListener('click', () => {
+    mapStarted = true;
+  });
+}
 
 const completeObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting && !mapCompletedTracked) {
+    if (entry.isIntersecting && mapStarted && !mapCompletedTracked) {
       mapCompletedTracked = true;
 
       if (typeof umami !== 'undefined') {
