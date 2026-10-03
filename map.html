@@ -323,7 +323,23 @@
     const mobileCta = document.querySelector('.mobile-cta');
     const mapSection = document.querySelector('#map');
     const finalCta = document.querySelector('#cta');
+let mapCompletedTracked = false;
 
+const completeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && !mapCompletedTracked) {
+      mapCompletedTracked = true;
+
+      if (typeof umami !== 'undefined') {
+        umami.track('map_complete');
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+if (finalCta) {
+  completeObserver.observe(finalCta);
+}
     function updateMobileCta() {
       if (!mobileCta || !mapSection || !finalCta || window.innerWidth > 720) {
         mobileCta?.classList.remove('is-visible');
