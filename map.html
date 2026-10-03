@@ -314,6 +314,13 @@
   <div class="mobile-cta"><a class="btn js-telegram" href="#" data-umami-event="telegram_click"> Записаться на сессию →</a></div>
 
   <script>
+    if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('pageshow', () => {
+  window.scrollTo(0, 0);
+});
     const TELEGRAM_URL = 'https://t.me/m/J5IMxP3bMmFi';
     document.querySelectorAll('.js-telegram').forEach(a => {
       if (TELEGRAM_URL.startsWith('http')) a.href = TELEGRAM_URL;
